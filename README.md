@@ -9,4 +9,4 @@ Video recording from multiple vehicle cameras of a fleet monitoring system needs
 ## Solution
 The following system is designed to save the previous 10 seconds of video and next 10 seconds of video when an incident occurs on a specific camera.
 
-
+![System Architecture](./system_architecture.png)
