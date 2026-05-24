@@ -18,13 +18,16 @@ A Pub - Sub system can be created using sockets between AI INFERENCE TASK and VI
 ## Design Considerations
 The following questions crossed my mind 
 1. What if the camera FPS is much more than the AI INFERENCE throughput?
+   
    Sol -> Process only current frame in AI INFERENCE (This helps to capture latest event)
 
 2. What if multiple event occurs together or same event occurs multiple time?
+   
    Sol -> Event consumer object maintains a queue of good enough size (defined by AI model throughput) so that multiple events can be received.
    SAVE VIDEO TASK processes each event and keeps it in a list for conducting next 10 sec frame acquisition. It deletes the list element after 10 sec passed. (TS    is expired).
 
 3. What if we need to send data to cloud?
+   
    Sol -> Save the data locally first anotated with uuid and send to cloud using a separate service (This will help to not compromise the SAVE Video TASK output)
 
 ## Shortcomings
